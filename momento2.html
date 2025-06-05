@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Antes do Altar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      scroll-behavior: smooth; /* rolagem suave */
+    }
+
+    /* Estilo do banner topo */
+    .banner {
+      background: url('minha-foto.jpg') no-repeat center center;
+      background-size: cover;
+      height: 400px; /* altura maior para destacar a imagem */
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      margin: 20px 0;
+    }
+
+    /* Botões vermelhos */
+    .buttons a, .buttons button {
+      background-color: #e50914;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-right: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .secondary-buttons button {
+      background-color: #333;
+      margin-top: 10px;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .tabs {
+      display: flex;
+      border-top: 1px solid #444;
+      margin-top: 30px;
+    }
+
+    .tabs div {
+      flex: 1;
+      text-align: center;
+      padding: 12px;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+    }
+
+    .tabs div.active {
+      border-bottom: 2px solid #e50914;
+      font-weight: bold;
+    }
+
+    .description {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    /* ------- Momento 2 ------- */
+    .topo {
+      background-color: #111;
+      padding: 20px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .topo h1 {
+      font-size: 32px;
+      margin: 0;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 10px 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .sessao {
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto 50px auto;
+    }
+
+    .capa {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .banner-momento2 {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .detalhes h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .data {
+      font-style: italic;
+      color: #999;
+    }
+
+    .episodios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .episodio {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      overflow: hidden;
+      padding-bottom: 10px;
+    }
+
+    .episodio img,
+    .episodio video {
+      width: 100%;
+      display: block;
+      border-bottom: 2px solid #333;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .episodio h3 {
+      font-size: 18px;
+      margin: 10px;
+    }
+
+    .episodio p {
+      font-size: 14px;
+      color: #ccc;
+      margin: 0 10px 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner topo -->
+  <div class="banner">
+    <div class="overlay"></div>
+  </div>
+
+  <div class="content">
+    <h1>Sobre nós: Antes do altar</h1>
+
+    <div class="description">
+      De onde tudo começou e como aconteceu: o casal que, até para eles mesmos, era o mais inesperado — acabou se tornando o mais amado.
+    </div>
+
+    <div class="buttons">
+      <!-- Botão "Assistir" agora é link para o momento 2 -->
+      <a href="#momento2">▶ Assistir</a>
+      <button>⬇️ Baixar T1:E1</button>
+    </div>
+
+    <div class="secondary-buttons">
+      <button>+ Minha lista</button>
+      <button>👍 Classificar</button>
+      <button>🔗 Compartilhar</button>
+    </div>
+
+    <div class="tabs">
+      <div class="active">Episódios</div>
+      <div>Coleção</div>
+      <div>Títulos semelhantes</div>
+    </div>
+  </div>
+
+  <!-- MOMENTO 2: O CASAL -->
+  <section id="momento2" class="sessao">
+    <header class="topo">
+ 
+        <h2>Sabrina & Mateus</h2>
+        <p class="data">Desde 2021</p>
+        <p>Nosso amor é feito de momentos simples, olhares que dizem tudo, e sorrisos que desarmam qualquer tempestade. Um amor construído dia após dia, que virou lar, refúgio e aventura. Conheça alguns episódios da nossa história:</p>
+      </div>
+    </div>
+
+    <div class="episodios">
+      <div class="episodio">
+        <img src="primeiro-encontro.jpg" alt="Foto do primeiro encontro" />
+        <div>
+          <h3>1. Primeiros Encontro</h3>
+          <p>Os primeiros encontros eram sempre no mesmo lugar, sempre pontuais pois não sabiamos quando poderiamos nos encontrar novamente. Nossos mundos se cruzaram e nunca mais foram os mesmos.</p>
+        </div>
+      </div>
+      <div class="episodio">
+        <img src="festividade.jpg" alt="Foto da festividade a dois" />
+        <div>
+          <h3>2. Nossa Primeira Festividade</h3>
+          <p>Foi feito o convite para ele ir a um culto com ela, mas quando eles foram se dar conta ele ja havia se batizado e estavam na sua primeira festividade da UJAIUEP juntos! .</p>
+        </div>
+      </div>
+      <div class="episodio">
+        <video controls src="Sorriso.mp4"></video>
+        <div>
+          <h3>3. Mesmo no simples </h3>
+          <p>O valor nunca esteve nas coisas ou nos lugares, mas na pessoa que faz tudo valer a pena.</p>
+        </div>
+      </div>
+      <div class="episodio">
+        <video controls src="Olharess.mp4"></video>
+        <div>
+          <h3>4. Olhares </h3>
+          <p>Um olhar que me tira da realidade e me leva para um lugar só nosso.</p>
+        </div>
+      </div>
+      <div class="episodio">
+       <div class="episodio">
+        <img src="nosso.anjinho.jpg" alt="Foto do primeiro encontro" />
+        <div>
+          <h3>1. Nosso anjinho</h3>
+          <p>Vivemos uma perda, mas ela nos uniu ainda mais. Um pedacinho nosso que sempre será lembrado com amor e que sei que tem muito orgulho do homem que o papai dele(a) se tornou.</p>
+        </div>
+      <div class="episodio">
+        <video controls src="videovida2.mp4"></video>
+        <div>
+          <h3>6. Escolhi Você</h3>
+          <p>De todas as vidas possíveis, eu escolheria essa. Porque nela, eu te tenho.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

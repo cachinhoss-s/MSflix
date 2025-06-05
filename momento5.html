@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Promessa que te faço - Estilo Netflix com Vídeo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body, html {
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background: #111;
+    color: #eee;
+    overflow-x: hidden;
+  }
+
+  /* Container full screen */
+  .hero {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 60px;
+    color: #fff;
+  }
+
+  /* Vídeo full screen */
+  .hero video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    filter: brightness(0.5);
+  }
+
+  /* Conteúdo na frente */
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+  }
+
+  .title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+  }
+
+  .btn-watch {
+    background-color: #e50914;
+    border: none;
+    padding: 14px 40px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(229,9,20,0.8);
+    transition: background-color 0.3s ease;
+  }
+  .btn-watch:hover {
+    background-color: #b00610;
+  }
+
+  .episodes-container {
+    position: relative;
+    max-width: 700px;
+    margin: 30px 60px 60px;
+    background: rgba(0,0,0,0.75);
+    border-radius: 10px;
+    padding: 20px 25px;
+    color: #eee;
+    display: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+  }
+
+  .episode {
+    margin-bottom: 20px;
+    padding: 15px 18px;
+    background: rgba(31,31,31,0.85);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+    font-size: 1.05rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+  }
+  .episode-title {
+    font-weight: 700;
+    color: #e50914;
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+  }
+
+  .typing-cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: #e50914;
+    margin-left: 4px;
+    animation: blink 1s steps(2, start) infinite;
+    vertical-align: bottom;
+  }
+  @keyframes blink {
+    0%, 50% {opacity: 1;}
+    50.01%, 100% {opacity: 0;}
+  }
+
+  @media(max-width: 768px) {
+    .hero {
+      padding: 0 20px;
+      justify-content: center;
+      height: auto;
+      min-height: 70vh;
+    }
+    .hero-content {
+      max-width: 100%;
+    }
+    .episodes-container {
+      margin: 20px;
+      max-width: 100%;
+    }
+    .title {
+      font-size: 2.4rem;
+    }
+    .btn-watch {
+      font-size: 1rem;
+      padding: 12px 30px;
+    }
+  }
+</style>
+</head>
+<body>
+  <section class="hero" role="main" aria-label="Tela inicial estilo Netflix com vídeo de fundo">
+    <video autoplay muted loop playsinline>
+      <source src="video.mp4" type="video/mp4" />
+      Seu navegador não suporta vídeos HTML5.
+    </video>
+    <div class="hero-content">
+      <h1 class="title">Promessa que te faço</h1>
+      <button class="btn-watch" id="btnWatch">▶️ Assistir</button>
+    </div>
+  </section>
+
+  <section class="episodes-container" id="episodesContainer" aria-live="polite" aria-label="Lista de episódios com promessas">
+    <!-- Episódios serão inseridos aqui -->
+  </section>
+
+<script>
+  const episodesData = [
+    {
+      title: 'Episódio 1',
+      text: 'Prometo estar ao teu lado mesmo quando o mundo parecer desabar...'
+    },
+    {
+      title: 'Episódio 2',
+      text: 'Prometo rir das tuas piadas sem graça, mesmo quando não for fácil...'
+    },
+    {
+      title: 'Episódio 3',
+      text: 'Prometo apoiar teus sonhos e ser tua maior torcida, sempre...'
+    },
+    {
+      title: 'Episódio 4',
+      text: 'Prometo construir contigo um lar cheio de amor, respeito e carinho...'
+    }
+  ];
+
+  const btnWatch = document.getElementById('btnWatch');
+  const episodesContainer = document.getElementById('episodesContainer');
+
+  let episodesVisible = false;
+
+  btnWatch.addEventListener('click', async () => {
+    if (!episodesVisible) {
+      btnWatch.textContent = '🔽 Ocultar';
+      episodesContainer.style.display = 'block';
+      await renderEpisodes();
+    } else {
+      btnWatch.textContent = '▶️ Assistir';
+      episodesContainer.style.display = 'none';
+      episodesContainer.innerHTML = '';
+    }
+    episodesVisible = !episodesVisible;
+  });
+
+  function typeEffect(element, text, speed = 40) {
+    return new Promise((resolve) => {
+      element.textContent = '';
+      let i = 0;
+      const cursor = document.createElement('span');
+      cursor.classList.add('typing-cursor');
+      element.appendChild(cursor);
+
+      function type() {
+        if (i < text.length) {
+          cursor.insertAdjacentText('beforebegin', text.charAt(i));
+          i++;
+          setTimeout(type, speed);
+        } else {
+          cursor.remove();
+          resolve();
+        }
+      }
+      type();
+    });
+  }
+
+  async function renderEpisodes() {
+    episodesContainer.innerHTML = '';
+    for (const ep of episodesData) {
+      const epDiv = document.createElement('div');
+      epDiv.classList.add('episode');
+
+      const epTitle = document.createElement('div');
+      epTitle.classList.add('episode-title');
+      epTitle.textContent = ep.title;
+
+      const epText = document.createElement('div');
+
+      epDiv.appendChild(epTitle);
+      epDiv.appendChild(epText);
+      episodesContainer.appendChild(epDiv);
+
+      await typeEffect(epText, ep.text);
+    }
+  }
+</script>
+</body>
+</html>

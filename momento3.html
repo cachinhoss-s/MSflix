@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Motivos para Te Amar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .titulo {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .descricao {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .botao-assistir {
+      display: inline-block;
+      background-color: #e50914;
+      color: #fff;
+      font-size: 1.2em;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+
+    .motivos-amor {
+      list-style: none;
+      padding: 0;
+      max-height: 400px;
+      overflow-y: auto;
+      border-top: 1px solid #333;
+      margin-top: 20px;
+    }
+
+    .motivos-amor li {
+      margin-bottom: 8px;
+      font-size: 1em;
+      padding: 4px 0;
+      border-bottom: 1px solid #333;
+    }
+
+    .episodio {
+      display: none;
+      margin-top: 20px;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="titulo">450 Motivos Para Te Amar</div>
+    <div class="descricao">Você é o meu motivo favorito para sorrir todos os dias.</div>
+    <button class="botao-assistir" onclick="mostrarVideo()">▶ Assistir</button>
+
+    <div class="episodio" id="episodio">
+      <video controls autoplay src="videovida.mp4"></video>
+    </div>
+
+    <ul class="motivos-amor" id="listaMotivos"></ul>
+  </div>
+
+  <script>
+    function mostrarVideo() {
+      document.getElementById("episodio").style.display = "block";
+    }
+
+    const motivos = [];
+    for (let i = 1; i <= 450; i++) {
+      motivos.push(`Motivo ${i}: Amo você porque ${gerarMotivo(i)}`);
+    }
+
+    function gerarMotivo(i) {
+      const frases = [
+        "seu sorriso ilumina meus dias.",
+        "você sempre me faz rir quando mais preciso.",
+        "estar ao seu lado é o meu lugar favorito.",
+        "sua voz me acalma como nenhuma outra.",
+        "você me inspira a ser melhor a cada dia.",
+        "o jeito que você me ama é único.",
+        "você me entende até no silêncio.",
+        "nosso amor é minha maior certeza.",
+        "compartilhar a vida com você é um privilégio.",
+        "te olhar me traz paz.",
+        "você é minha alegria diária.",
+        "somos uma equipe perfeita.",
+        "me sinto seguro(a) com você.",
+        "você cuida de mim com tanto carinho.",
+        "você é o amor da minha vida."
+      ];
+      return frases[i % frases.length];
+    }
+
+    const lista = document.getElementById("listaMotivos");
+    motivos.forEach(motivo => {
+      const li = document.createElement("li");
+      li.textContent = motivo;
+      lista.appendChild(li);
+    });
+  </script>
+</body>
+</html>
